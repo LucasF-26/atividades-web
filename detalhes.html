@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memorial Celeste - Detalhes do Ídolo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="header-container">
+        <div class="header-container d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <h1>Eternos Ídolos do Cruzeiro</h1>
             <a href="index.html" class="btn-voltar">← Voltar para a Galeria</a>
         </div>
     </header>
 
-    <main class="container" id="detalhe-conteudo">
-        <div class="detalhe-layout">
+    <main class="container my-5" id="detalhe-conteudo">
+        
+        <section class="detalhe-layout mb-5">
             
-         
             <div class="coluna-perfil">
                 <img id="idolo-foto" src="" alt="" class="foto-detalhe">
                 <h2 id="idolo-nome">Carregando...</h2>
                 <span id="idolo-posicao" class="badge-posicao"></span>
             </div>
             
-         
             <div class="coluna-info">
                 <div class="stats-box">
                     <h3>Ficha Técnica</h3>
@@ -39,13 +40,40 @@
                 <ul id="idolo-titulos" class="lista-titulos"></ul>
             </div>
 
-        </div>
+        </section>
+
+        <section class="secao-fotos-vinculadas mb-5">
+            <h3 class="subtitulo-secao mb-4">📸 Galeria de Fotos Históricas</h3>
+            <div id="galeria-fotos" class="grid-fotos-vinculadas"></div>
+        </section>
+
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        <div class="footer-grid container">
+            <div class="footer-secao footer-sobre">
+                <h3>Sobre o Memorial</h3>
+                <p>Plataforma dedicada a eternizar a trajetória e a ficha técnica dos maiores atletas da história da instituição, estruturada dinamicamente por meio de dados assíncronos.</p>
+            </div>
+            <div class="footer-secao footer-autoria">
+                <h3>Autoria</h3>
+                <p><strong>Aluno:</strong> Lucas</p>
+                <p><strong>Curso:</strong> Sistemas de Informação</p>
+                <p><strong>Turma:</strong> 1º Período</p>
+                <div class="footer-redes">
+                    <strong>Redes Sociais:</strong> 
+                    <a href="#" class="ms-1">💻 facebook.com/memorialceleste</a>
+                    <span class="mx-2">|</span>
+                    <a href="#">🐦 @celestememorial</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <p class="mb-0">&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,19 +13,11 @@ body {
     min-height: 100vh;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex: 1;
-}
-
-
 .main-header {
-    background-color: #0045a4; /* Azul Cruzeiro */
+    background-color: #0045a4;
     color: #ffffff;
     padding: 30px 0;
-    border-bottom: 4px solid #f9a825; /* Detalhe em Amarelo/Ouro */
+    border-bottom: 4px solid #f9a825;
 }
 
 .header-container {
@@ -40,22 +31,39 @@ body {
     margin-bottom: 10px;
 }
 
-.main-footer {
-    background-color: #1a202c;
-    color: #a0aec0;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9rem;
-    margin-top: auto;
+.subtitulo-secao {
+    font-size: 1.6rem;
+    color: #0045a4;
+    font-weight: bold;
+    border-bottom: 2px solid #cbd5e0;
+    padding-bottom: 8px;
 }
 
-
-.grid-idolos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.carousel-item {
+    height: 450px;
+    background-color: #000000;
 }
 
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 25px;
+    border-radius: 12px;
+    bottom: 40px;
+    border-left: 5px solid #f9a825;
+}
+
+.carousel-caption h3 {
+    color: #f9a825;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
 .card-idolo {
     background-color: #ffffff;
@@ -65,6 +73,8 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    border: 1px solid #e2e8f0;
 }
 
 .card-idolo:hover {
@@ -111,7 +121,6 @@ body {
     flex-grow: 1;
 }
 
-
 .btn-saber-mais {
     background-color: #0045a4;
     color: #ffffff;
@@ -143,10 +152,9 @@ body {
     color: #0045a4;
 }
 
-
 .detalhe-layout {
     display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
     gap: 40px;
     background-color: #ffffff;
     padding: 40px;
@@ -172,6 +180,7 @@ body {
 .coluna-perfil h2 {
     font-size: 2rem;
     margin-bottom: 10px;
+    color: #1a202c;
 }
 
 .badge-posicao {
@@ -198,6 +207,7 @@ body {
 
 .stats-box h3 {
     margin-bottom: 10px;
+    color: #1a202c;
 }
 
 .stats-box p {
@@ -228,4 +238,116 @@ body {
     padding-left: 25px;
     margin-bottom: 8px;
     font-weight: 500;
+}
+
+.secao-fotos-vinculadas {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.grid-fotos-vinculadas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card-foto-vinculada {
+    background-color: #f7fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.card-foto-vinculada img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.legenda-foto {
+    padding: 12px;
+    background-color: #1a202c;
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.main-footer {
+    background-color: #1a202c;
+    color: #a0aec0;
+    padding: 40px 0 0 0;
+    margin-top: auto;
+    border-top: 4px solid #0045a4;
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-secao {
+    flex: 1;
+    min-width: 280px;
+}
+
+.main-footer h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.main-footer p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-redes {
+    margin-top: 15px;
+}
+
+.footer-redes a {
+    color: #f9a825;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.footer-redes a:hover {
+    text-decoration: underline;
+}
+
+.footer-copy {
+    background-color: #111827;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid #2d3748;
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 300px;
+    }
+    .carousel-caption {
+        bottom: 20px;
+        padding: 15px;
+    }
+    .carousel-caption h3 {
+        font-size: 1.2rem;
+    }
+    .carousel-caption p {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+    }
+    .detalhe-layout, .secao-fotos-vinculadas {
+        padding: 20px;
+    }
+    .footer-grid {
+        flex-direction: column;
+    }
 }

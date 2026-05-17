@@ -4,27 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ídolos do Cruzeiro - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 
     <header class="main-header">
-        <div class="header-container">
+        <div class="header-container text-center text-md-start">
             <h1>Eternos Ídolos do Cruzeiro</h1>
-            <p>Conheça a história e as conquistas dos maiores craques que vestiram o manto celeste.</p>
+            <p class="mb-0">Conheça a história e as conquistas dos maiores craques que vestiram o manto celeste.</p>
         </div>
     </header>
 
-    <main class="container">
-      
-        <section id="grid-idolos" class="grid-idolos"></section>
+    <main class="container my-5">
+        
+        <section class="mb-5">
+            <h2 class="subtitulo-secao mb-4">⭐ Craques em Destaque</h2>
+            
+            <div id="carrosselIdolos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-indicators" id="carrossel-indicadores">
+                    </div>
+                
+                <div class="carousel-inner" id="carrossel-slides">
+                    </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carrosselIdolos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carrosselIdolos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="subtitulo-secao mb-4">⚽ Galeria de Ídolos</h2>
+            <div id="grid-idolos" class="row g-4">
+                </div>
+        </section>
+
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        <div class="footer-grid container">
+            <div class="footer-secao footer-sobre">
+                <h3>Sobre o Memorial</h3>
+                <p>Plataforma dedicada a eternizar a trajetória e a ficha técnica dos maiores atletas da história da instituição, estruturada dinamicamente por meio de dados assíncronos.</p>
+            </div>
+            <div class="footer-secao footer-autoria">
+                <h3>Autoria</h3>
+                <p><strong>Aluno:</strong> Lucas</p>
+                <p><strong>Curso:</strong> Sistemas de Informação</p>
+                <p><strong>Turma:</strong> 1º Período</p>
+                <div class="footer-redes">
+                    <strong>Redes Sociais:</strong> 
+                    <a href="#" class="ms-1">💻 facebook.com/memorialceleste</a>
+                    <span class="mx-2">|</span>
+                    <a href="#">🐦 @celestememorial</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <p class="mb-0">&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        </div>
     </footer>
 
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
