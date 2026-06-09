@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Celeste - Visualizações</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --azul:    #0045a4;
+            --azul2:   #1a6fc4;
+            --ouro:    #c8a94a;
+            --ouro2:   #f0d070;
+            --cinza:   #1a1a2e;
+            --cinza2:  #0f0f1e;
+            --superfice: #0d1b3e;
+            --card-bg: rgba(255,255,255,0.04);
+            --borda:   rgba(200,169,74,0.25);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--cinza2);
+            color: #e8e8e8;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ── */
+        .main-header {
+            background: linear-gradient(135deg, var(--cinza) 0%, var(--superfice) 100%);
+            border-bottom: 2px solid var(--ouro);
+            padding: 1.4rem 2rem;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .main-header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: .5px;
+        }
+        .main-header h1 span { color: var(--ouro); }
+        .btn-voltar {
+            background: transparent;
+            border: 1.5px solid var(--ouro);
+            color: var(--ouro);
+            padding: .45rem 1.1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: .9rem;
+            transition: all .2s;
+        }
+        .btn-voltar:hover { background: var(--ouro); color: var(--cinza2); }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(to bottom, var(--superfice), var(--cinza2));
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--borda);
+        }
+        .hero-eyebrow {
+            font-size: .75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ouro);
+            margin-bottom: .6rem;
+        }
+        .hero h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .hero p {
+            color: #9ab;
+            margin-top: .6rem;
+            font-size: 1rem;
+        }
+
+        /* ── STAT STRIP ── */
+        .stat-strip {
+            background: var(--superfice);
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+            padding: 1.4rem 2rem;
+        }
+        .stat-strip-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+        }
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--ouro);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: .75rem;
+            color: #7a8fa6;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: .3rem;
+        }
+
+        /* ── GRID DE GRÁFICOS ── */
+        .charts-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .chart-card.full { grid-column: 1 / -1; }
+
+        .chart-card-header { display: flex; align-items: flex-start; gap: .8rem; }
+        .chart-icon {
+            width: 40px; height: 40px;
+            background: rgba(200,169,74,.15);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .chart-card-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .chart-card-header p {
+            font-size: .78rem;
+            color: #6a7f96;
+            margin-top: .15rem;
+        }
+        .chart-wrap { position: relative; }
+        .chart-wrap canvas { max-height: 300px; }
+
+        /* ── RANKING ── */
+        .ranking-list { display: flex; flex-direction: column; gap: .6rem; }
+        .ranking-row {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            padding: .55rem .8rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.05);
+        }
+        .rank-pos {
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--ouro);
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .rank-name { font-size: .9rem; color: #e0e0e0; flex: 1; }
+        .rank-bar-wrap {
+            flex: 2;
+            height: 6px;
+            background: rgba(255,255,255,.08);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .rank-bar { height: 100%; border-radius: 3px; background: var(--ouro); }
+        .rank-value {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--ouro2);
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* ── TABELA DE TÍTULOS ── */
+        .titulos-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .85rem;
+        }
+        .titulos-table th {
+            background: rgba(200,169,74,.12);
+            color: var(--ouro);
+            padding: .6rem .8rem;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: left;
+        }
+        .titulos-table td {
+            padding: .55rem .8rem;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            color: #ccc;
+        }
+        .titulos-table tr:last-child td { border-bottom: none; }
+        .badge-titulo {
+            display: inline-block;
+            background: rgba(200,169,74,.15);
+            color: var(--ouro2);
+            border: 1px solid rgba(200,169,74,.3);
+            border-radius: 4px;
+            padding: .1rem .5rem;
+            font-size: .72rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ── FOOTER ── */
+        .main-footer {
+            background: var(--cinza);
+            border-top: 2px solid var(--ouro);
+            padding: 2rem 2rem 1rem;
+            margin-top: 2rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-bottom: 1.5rem;
+        }
+        .footer-secao h3 { color: var(--ouro); font-size: .9rem; margin-bottom: .5rem; }
+        .footer-secao p  { font-size: .82rem; color: #9ab; line-height: 1.6; }
+        .footer-copy {
+            border-top: 1px solid rgba(255,255,255,.1);
+            text-align: center;
+            padding-top: 1rem;
+            font-size: .78rem;
+            color: #5a6a7a;
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 1.6rem; }
+            .stat-number { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-container">
+        <h1>Eternos Ídolos do <span>Cruzeiro</span></h1>
+        <a href="index.html" class="btn-voltar">← Voltar para a Galeria</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <p class="hero-eyebrow">Memorial Celeste · Dados em destaque</p>
+    <h2>Visualizações & Estatísticas</h2>
+    <p>Números, conquistas e trajetórias dos maiores ídolos da história celeste.</p>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+    <div class="stat-strip-inner" id="stat-strip"></div>
+</div>
+
+<!-- GRÁFICOS -->
+<div class="charts-section">
+
+    <!-- Gráfico 1: Partidas por ídolo (barras) -->
+    <div class="chart-card">
+        <div class="chart-card-header">
+            <div class="chart-icon">📊</div>
+            <div>
+                <h3>Partidas pelo Cruzeiro</h3>
+                <p>Total de jogos disputados por cada ídolo</p>
+            </div>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="chart-jogos"></canvas>
+        </div>
+    </div>
+
+    <!-- Gráfico 2: Distribuição por posição (pizza) -->
+    <div class="chart-card">
+        <div class="chart-card-header">
+            <div class="chart-icon">🥧</div>
+            <div>
+                <h3>Distribuição por Posição</h3>
+                <p>Proporção de ídolos por função em campo</p>
+            </div>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="chart-posicao"></canvas>
+        </div>
+    </div>
+
+    <!-- Gráfico 3: Anos de clube (linha) -->
+    <div class="chart-card full">
+        <div class="chart-card-header">
+            <div class="chart-icon">📅</div>
+            <div>
+                <h3>Anos de Cruzeiro por Ídolo</h3>
+                <p>Duração da passagem de cada jogador pelo clube</p>
+            </div>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="chart-anos"></canvas>
+        </div>
+    </div>
+
+    <!-- Ranking de jogos -->
+    <div class="chart-card">
+        <div class="chart-card-header">
+            <div class="chart-icon">🏅</div>
+            <div>
+                <h3>Ranking de Partidas</h3>
+                <p>Quem mais vestiu a camisa celeste</p>
+            </div>
+        </div>
+        <div class="ranking-list" id="ranking-jogos"></div>
+    </div>
+
+    <!-- Tabela de títulos -->
+    <div class="chart-card">
+        <div class="chart-card-header">
+            <div class="chart-icon">🏆</div>
+            <div>
+                <h3>Títulos por Ídolo</h3>
+                <p>Conquistas registradas de cada jogador</p>
+            </div>
+        </div>
+        <div style="overflow-x:auto">
+            <table class="titulos-table" id="tabela-titulos"></table>
+        </div>
+    </div>
+
+    <!-- Gráfico 4: Número de títulos (barras horizontais) -->
+    <div class="chart-card full">
+        <div class="chart-card-header">
+            <div class="chart-icon">🎖️</div>
+            <div>
+                <h3>Quantidade de Títulos por Ídolo</h3>
+                <p>Baseado nos títulos cadastrados no memorial</p>
+            </div>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="chart-titulos"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-grid container">
+        <div class="footer-secao">
+            <h3>Sobre o Memorial</h3>
+            <p>Plataforma dedicada a eternizar a trajetória e a ficha técnica dos maiores atletas da história da instituição, estruturada dinamicamente por meio de dados assíncronos.</p>
+        </div>
+        <div class="footer-secao">
+            <h3>Autoria</h3>
+            <p><strong style="color:#ccc">Aluno:</strong> Lucas</p>
+            <p><strong style="color:#ccc">Curso:</strong> Sistemas de Informação</p>
+            <p><strong style="color:#ccc">Turma:</strong> 1º Período</p>
+        </div>
+    </div>
+    <div class="footer-copy">
+        <p>&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ── DADOS ── */
+const dados = [
+    {
+        id: 1, nome: "Fábio", posicao: "Goleiro",
+        periodo: "2005 - 2021", jogos: 976,
+        titulos: ["Campeonato Brasileiro (2013, 2014)", "Copa do Brasil (2000, 2017, 2018)", "Campeonato Mineiro (7 vezes)"]
+    },
+    {
+        id: 2, nome: "Alex", posicao: "Meia",
+        periodo: "2001 - 2004", jogos: 121,
+        titulos: ["Tríplice Coroa (2003)", "Campeonato Brasileiro (2003)", "Copa do Brasil (2003)", "Campeonato Mineiro (2003, 2004)"]
+    },
+    {
+        id: 3, nome: "Tostão", posicao: "Atacante / Meia",
+        periodo: "1963 - 1972", jogos: 378,
+        titulos: ["Taça Brasil / Campeonato Brasileiro (1966)", "Campeonato Mineiro (5 vezes)"]
+    },
+    {
+        id: 4, nome: "Dirceu Lopes", posicao: "Meia / Atacante",
+        periodo: "1963 - 1977", jogos: 610,
+        titulos: ["Taça Brasil / Campeonato Brasileiro (1966)", "Campeonato Mineiro (9 vezes)"]
+    }
+];
+
+/* ── HELPERS ── */
+const AZUL  = '#0045a4';
+const OURO  = '#c8a94a';
+const OURO2 = '#f0d070';
+const cores = ['#c8a94a','#0a7cff','#e8505b','#3ecf8e'];
+
+function anosNoClubeCount(periodo) {
+    const partes = periodo.split(' - ');
+    return parseInt(partes[1]) - parseInt(partes[0]);
+}
+
+const nomes   = dados.map(d => d.nome);
+const jogos   = dados.map(d => d.jogos);
+const anos    = dados.map(d => anosNoClubeCount(d.periodo));
+const titulos = dados.map(d => d.titulos.length);
+const maxJogos = Math.max(...jogos);
+
+/* ── STAT STRIP ── */
+const strip = document.getElementById('stat-strip');
+const totalJogos = jogos.reduce((a,b) => a+b, 0);
+const totalTit   = titulos.reduce((a,b) => a+b, 0);
+const maxAnos    = Math.max(...anos);
+
+[
+    { n: dados.length,  l: 'Ídolos cadastrados' },
+    { n: totalJogos.toLocaleString('pt-br'), l: 'Partidas somadas' },
+    { n: totalTit,  l: 'Títulos registrados' },
+    { n: maxAnos,   l: 'Máximo de anos no clube' },
+].forEach(s => {
+    strip.innerHTML += `
+        <div class="stat-item">
+            <div class="stat-number">${s.n}</div>
+            <div class="stat-label">${s.l}</div>
+        </div>`;
+});
+
+/* ── CONFIGURAÇÃO GLOBAL CHART.JS ── */
+Chart.defaults.color = '#7a8fa6';
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.size = 12;
+
+const gridColor = 'rgba(255,255,255,0.06)';
+
+/* ── GRÁFICO 1: Barras — partidas ── */
+new Chart(document.getElementById('chart-jogos'), {
+    type: 'bar',
+    data: {
+        labels: nomes,
+        datasets: [{
+            label: 'Partidas',
+            data: jogos,
+            backgroundColor: cores,
+            borderRadius: 6,
+            borderSkipped: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => ` ${ctx.parsed.y} partidas`
+                }
+            }
+        },
+        scales: {
+            x: { grid: { color: gridColor }, ticks: { color: '#9ab' } },
+            y: { grid: { color: gridColor }, ticks: { color: '#9ab' }, beginAtZero: true }
+        }
+    }
+});
+
+/* ── GRÁFICO 2: Pizza — posições ── */
+const posMap = {};
+dados.forEach(d => {
+    const pos = d.posicao.split(' / ')[0].trim();
+    posMap[pos] = (posMap[pos] || 0) + 1;
+});
+new Chart(document.getElementById('chart-posicao'), {
+    type: 'doughnut',
+    data: {
+        labels: Object.keys(posMap),
+        datasets: [{
+            data: Object.values(posMap),
+            backgroundColor: cores,
+            borderColor: '#0d1b3e',
+            borderWidth: 3,
+            hoverOffset: 8,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { color: '#9ab', padding: 16, boxWidth: 12 }
+            }
+        }
+    }
+});
+
+/* ── GRÁFICO 3: Linha — anos no clube ── */
+new Chart(document.getElementById('chart-anos'), {
+    type: 'bar',
+    data: {
+        labels: nomes,
+        datasets: [{
+            label: 'Anos no clube',
+            data: anos,
+            backgroundColor: nomes.map((_, i) => cores[i] + 'cc'),
+            borderColor: cores,
+            borderWidth: 2,
+            borderRadius: 6,
+            borderSkipped: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        indexAxis: 'y',
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: { label: ctx => ` ${ctx.parsed.x} anos` }
+            }
+        },
+        scales: {
+            x: {
+                grid: { color: gridColor },
+                ticks: { color: '#9ab' },
+                beginAtZero: true,
+                title: { display: true, text: 'Anos', color: '#7a8fa6' }
+            },
+            y: { grid: { color: 'transparent' }, ticks: { color: '#ccc' } }
+        }
+    }
+});
+
+/* ── GRÁFICO 4: Barras — títulos ── */
+new Chart(document.getElementById('chart-titulos'), {
+    type: 'bar',
+    data: {
+        labels: nomes,
+        datasets: [{
+            label: 'Títulos',
+            data: titulos,
+            backgroundColor: OURO + 'cc',
+            borderColor: OURO,
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y} título(s)` } }
+        },
+        scales: {
+            x: { grid: { color: gridColor }, ticks: { color: '#9ab' } },
+            y: {
+                grid: { color: gridColor },
+                ticks: { color: '#9ab', stepSize: 1 },
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+/* ── RANKING ── */
+const ranking = document.getElementById('ranking-jogos');
+const sorted = [...dados].sort((a,b) => b.jogos - a.jogos);
+sorted.forEach((d, i) => {
+    const pct = (d.jogos / maxJogos * 100).toFixed(1);
+    ranking.innerHTML += `
+        <div class="ranking-row">
+            <span class="rank-pos">${i+1}º</span>
+            <span class="rank-name">${d.nome}</span>
+            <div class="rank-bar-wrap">
+                <div class="rank-bar" style="width:${pct}%"></div>
+            </div>
+            <span class="rank-value">${d.jogos.toLocaleString('pt-br')}</span>
+        </div>`;
+});
+
+/* ── TABELA TÍTULOS ── */
+const tabela = document.getElementById('tabela-titulos');
+tabela.innerHTML = `
+    <thead><tr>
+        <th>Ídolo</th><th>Títulos conquistados</th><th style="text-align:center">Total</th>
+    </tr></thead>
+    <tbody>
+        ${dados.map(d => `
+            <tr>
+                <td style="color:#fff;font-weight:600">${d.nome}</td>
+                <td>${d.titulos.map(t => `<span class="badge-titulo">${t}</span>`).join(' ')}</td>
+                <td style="text-align:center;color:${OURO2};font-weight:700">${d.titulos.length}</td>
+            </tr>
+        `).join('')}
+    </tbody>`;
+</script>
+</body>
+</html>
