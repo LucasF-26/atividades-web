@@ -1,45 +1,39 @@
-# 🏆 Memorial Celeste — Ídolos do Cruzeiro Esporte Clube
+Memorial Celeste - Ídolos do Cruzeiro
 
-Plataforma web dinâmica desenvolvida como atividade interdisciplinar do curso de Sistemas de Informação. A aplicação lista grandes ídolos da história do Cruzeiro e exibe informações detalhadas de cada atleta por meio de páginas interligadas dinamicamente, utilizando dados estruturados em JSON e renderização assíncrona via JavaScript puro.
+Aluno: Lucas de Freitas Ferreira
 
----
+Matrícula: 1574447
 
-## 👤 Dados do Aluno
+Curso: Sistemas de Informação
 
-| Campo | Informação |
-|---|---|
-| **Nome** | Lucas de Freitas Ferreira |
-| **Matrícula** | 1574447 |
-| **Curso** | Sistemas de Informação |
-| **Período** | 1º Semestre |
+Turma: 1º Período
 
----
 
-## 📄 Páginas do Projeto
+Sobre o Projeto
 
-| Arquivo | Descrição |
-|---|---|
-| `index.html` | Galeria principal com carrossel de destaques e grid de cards |
-| `detalhes.html` | Página individual de cada ídolo, carregada dinamicamente via query string (`?id=X`) |
-| `visualizacoes.html` | Dashboard com gráficos e estatísticas dos dados cadastrados |
-| `js/app.js` | Lógica central: dados JSON, renderização do DOM e navegação |
-| `css/estilo.css` | Estilos customizados do projeto |
+O Memorial Celeste é uma aplicação web dedicada a eternizar a história e as conquistas dos maiores ídolos do Cruzeiro Esporte Clube. O projeto foi desenvolvido como Trabalho Prático da disciplina de Desenvolvimento Web.
 
----
+Funcionalidades
 
-## 📊 Funcionalidade de Visualizações (`visualizacoes.html`)
 
-Página de dashboard que processa e exibe os dados dos ídolos cadastrados de forma visual e interativa, utilizando a biblioteca **Chart.js**. Os dados são lidos diretamente da estrutura JSON do `app.js` e transformados nos seguintes componentes:
+Home-page com carrossel de destaques, galeria de cards e gráfico de partidas
+Login e Cadastro de usuários com controle de sessão via sessionStorage
+Menu dinâmico — opções de Favoritos e Logout visíveis apenas para usuário logado; Cadastro visível apenas para administradores
+Pesquisa de ídolos por nome ou descrição
+Favoritos — usuário logado pode favoritar/desfavoritar ídolos com ícone de coração
+Página Meus Favoritos listando os ídolos favoritados pelo usuário logado
+CRUD de Ídolos exclusivo para administradores (inserir, editar, excluir)
+Página de Detalhes com biografia, ficha técnica, títulos e galeria de fotos
+Visualizações avançadas com gráfico de partidas por ídolo (Chart.js)
 
-- **Cards de estatísticas gerais** — total de ídolos, partidas somadas, títulos registrados e máximo de anos no clube
-- **Gráfico de barras** — total de partidas disputadas por cada ídolo
-- **Gráfico de rosca (doughnut)** — distribuição dos ídolos por posição em campo
-- **Gráfico de barras horizontais** — duração da passagem de cada jogador pelo clube (em anos)
-- **Ranking de partidas** — lista ordenada com barra de progresso proporcional
-- **Tabela de títulos** — conquistas registradas de cada ídolo com badges visuais
-- **Gráfico de barras douradas** — quantidade de títulos por ídolo
 
----
+Tecnologias Utilizadas
+
+
+HTML5, CSS3, JavaScript
+Bootstrap 5.3
+Chart.js
+JSON Server (back-end / API REST)
 
 ## 🖼️ Prints da Funcionalidade
 
