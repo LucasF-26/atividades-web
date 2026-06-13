@@ -1,0 +1,86 @@
+{
+  "idolos": [
+    {
+      "id": 1,
+      "nome": "Fábio",
+      "posicao": "Goleiro",
+      "periodo": "2005 - 2021",
+      "jogos": "976",
+      "descricao": "O atleta com mais jogos na história do Cruzeiro e um dos maiores goleiros do Brasil.",
+      "biografia": "Fábio Deivson Lopes Maciel é sinônimo de Cruzeiro. Com quase mil partidas disputadas, o goleiro se destacou por defesas milagrosas, regularidade impressionante e uma liderança incontestável. Foi peça fundamental nas conquistas de dois Campeonatos Brasileiros consecutivos e do bicampeonato da Copa do Brasil.",
+      "titulos": ["Campeonato Brasileiro (2013, 2014)", "Copa do Brasil (2000, 2017, 2018)", "Campeonato Mineiro (7 vezes)"],
+      "imagem": "imagens/fabio.png",
+      "destaque": true,
+      "fotosVinculadas": [
+        { "url": "imagens/fabio.png", "titulo": "Fábio comemorando o título da Copa do Brasil no Mineirão" },
+        { "url": "imagens/fabio.png", "titulo": "O paredão celeste erguendo a taça do Brasileirão" }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Alex",
+      "posicao": "Meia",
+      "periodo": "2001 - 2004",
+      "jogos": "121",
+      "descricao": "O 'Talento Azul', maestro da histórica Tríplice Coroa de 2003.",
+      "biografia": "Alexandro de Souza, o Alex, teve uma das passagens mais brilhantes que um jogador já registrou no futebol brasileiro. Em 2003, ele comandou o time que encantou o país, conquistando o Campeonato Mineiro, a Copa do Brasil e o Brasileirão no mesmo ano, exibindo um futebol genial, técnico e cirúrgico.",
+      "titulos": ["Tríplice Coroa (2003)", "Campeonato Brasileiro (2003)", "Copa do Brasil (2003)", "Campeonato Mineiro (2003, 2004)"],
+      "imagem": "imagens/alex.png",
+      "destaque": true,
+      "fotosVinculadas": [
+        { "url": "imagens/alex.png", "titulo": "Alex comemorando o antológico gol de placa de cobertura" },
+        { "url": "imagens/alex.png", "titulo": "O maestro com a taça de campeão brasileiro de 2003" }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Tostão",
+      "posicao": "Atacante / Meia",
+      "periodo": "1963 - 1972",
+      "jogos": "378",
+      "descricao": "O 'Rei Branco', maior artilheiro da história do clube e gênio da Taça Brasil de 1966.",
+      "biografia": "Eduardo Gonçalves de Andrade, o Tostão, é considerado por muitos o maior jogador da história do Cruzeiro. Dotado de uma inteligência genial e visão de jogo incomparável, ele liderou o histórico time da década de 1960 que encantou o país e desbancou o Santos de Pelé na final da Taça Brasil de 1966. É o maior artilheiro do clube com 249 gols marcados.",
+      "titulos": ["Taça Brasil / Campeonato Brasileiro (1966)", "Campeonato Mineiro (1965, 1966, 1967, 1968, 1969)"],
+      "imagem": "imagens/tostao.png",
+      "destaque": false,
+      "fotosVinculadas": [
+        { "url": "imagens/tostao.png", "titulo": "Tostão posando com o clássico uniforme nos anos 60" }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Dirceu Lopes",
+      "posicao": "Meia / Atacante",
+      "periodo": "1963 - 1977",
+      "jogos": "610",
+      "descricao": "O 'Príncipe', um dos maiores camisas 10 do futebol brasileiro e símbolo do Esquadrão de 1966.",
+      "biografia": "Dirceu Lopes Mendes é uma das figuras mais emblemáticas e geniais da história do Cruzeiro. Conhecido pela sua velocidade impressionante, dribles desconcertantes e arrancadas fulminantes, formou com Tostão uma das duplas mais temidas do futebol mundial. Foi o grande maestro na histórica goleada de 6 a 2 sobre o Santos de Pelé e peça-chave na conquista da Taça Brasil de 1966.",
+      "titulos": ["Taça Brasil / Campeonato Brasileiro (1966)", "Campeonato Mineiro (9 vezes)"],
+      "imagem": "imagens/dirceu.png",
+      "destaque": true,
+      "fotosVinculadas": [
+        { "url": "imagens/dirceu.png", "titulo": "Dirceu Lopes desfilando sua genialidade no Mineirão" },
+        { "url": "imagens/dirceu.png", "titulo": "O Príncipe celebrando a conquista histórica de 1966" }
+      ]
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "login": "admin",
+      "senha": "123",
+      "nome": "Administrador do Sistema",
+      "email": "admin@memorialceleste.com",
+      "admin": true
+    },
+    {
+      "id": "2",
+      "login": "user",
+      "senha": "123",
+      "nome": "Torcedor Celeste",
+      "email": "user@memorialceleste.com",
+      "admin": false
+    }
+  ],
+  "favoritos": []
+}

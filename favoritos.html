@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Celeste - Meus Favoritos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <h1>Eternos Ídolos do Cruzeiro</h1>
+            <nav class="header-nav d-flex align-items-center gap-3 flex-wrap">
+                <a href="index.html" class="btn-nav">← Galeria</a>
+                <a href="cadastro_itens.html" class="btn-nav btn-nav-admin d-none" id="link-cadastro">➕ Cadastro</a>
+                <a href="favoritos.html" class="btn-nav" id="link-favoritos">❤️ Favoritos</a>
+                <a href="login.html" class="btn-nav btn-nav-login d-none" id="link-login">🔑 Login</a>
+                <button class="btn-nav btn-nav-logout d-none" id="btn-logout" onclick="fazerLogout()">👋 Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <h2 class="subtitulo-secao mb-4">❤️ Meus Ídolos Favoritos</h2>
+        <div id="grid-favoritos" class="row g-4"></div>
+        <p id="msg-sem-favoritos" class="text-center text-muted mt-4 d-none">Você ainda não favoritou nenhum ídolo. <a href="index.html">Voltar à galeria</a></p>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-copy">
+            <p class="mb-0">&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -12,34 +12,39 @@
     <header class="main-header">
         <div class="header-container d-flex justify-content-between align-items-center flex-wrap gap-3">
             <h1>Eternos Ídolos do Cruzeiro</h1>
-            <a href="index.html" class="btn-voltar">← Voltar para a Galeria</a>
+            <nav class="header-nav d-flex align-items-center gap-3 flex-wrap">
+                <a href="index.html" class="btn-nav">← Galeria</a>
+                <a href="cadastro_itens.html" class="btn-nav btn-nav-admin d-none" id="link-cadastro">➕ Cadastro</a>
+                <a href="favoritos.html" class="btn-nav d-none" id="link-favoritos">❤️ Favoritos</a>
+                <a href="login.html" class="btn-nav btn-nav-login" id="link-login">🔑 Login</a>
+                <button class="btn-nav btn-nav-logout d-none" id="btn-logout" onclick="fazerLogout()">👋 Logout</button>
+            </nav>
         </div>
     </header>
 
     <main class="container my-5" id="detalhe-conteudo">
-        
+
         <section class="detalhe-layout mb-5">
-            
             <div class="coluna-perfil">
                 <img id="idolo-foto" src="" alt="" class="foto-detalhe">
                 <h2 id="idolo-nome">Carregando...</h2>
                 <span id="idolo-posicao" class="badge-posicao"></span>
+                <button id="btn-favorito-detalhe" class="btn-favorito-detalhe mt-3 d-none" onclick="toggleFavoritoDetalhe()">
+                    <span id="icone-favorito-detalhe">🤍</span> <span id="texto-favorito-detalhe">Favoritar</span>
+                </button>
             </div>
-            
+
             <div class="coluna-info">
                 <div class="stats-box">
                     <h3>Ficha Técnica</h3>
                     <p><strong>Anos no clube:</strong> <span id="idolo-periodo"></span></p>
                     <p><strong>Partidas jogadas:</strong> <span id="idolo-jogos"></span></p>
                 </div>
-                
                 <h3>Biografia</h3>
                 <p id="idolo-biografia" class="texto-biografia"></p>
-
                 <h3>Principais Títulos</h3>
                 <ul id="idolo-titulos" class="lista-titulos"></ul>
             </div>
-
         </section>
 
         <section class="secao-fotos-vinculadas mb-5">
@@ -57,15 +62,9 @@
             </div>
             <div class="footer-secao footer-autoria">
                 <h3>Autoria</h3>
-                <p><strong>Aluno:</strong> Lucas</p>
+                <p><strong>Aluno:</strong> Lucas de Freitas Ferreira</p>
                 <p><strong>Curso:</strong> Sistemas de Informação</p>
                 <p><strong>Turma:</strong> 1º Período</p>
-                <div class="footer-redes">
-                    <strong>Redes Sociais:</strong> 
-                    <a href="#" class="ms-1">💻 facebook.com/memorialceleste</a>
-                    <span class="mx-2">|</span>
-                    <a href="#">🐦 @celestememorial</a>
-                </div>
             </div>
         </div>
         <div class="footer-copy">

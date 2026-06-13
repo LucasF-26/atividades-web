@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Celeste - Cadastro de Ídolos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <h1>Eternos Ídolos do Cruzeiro</h1>
+            <nav class="header-nav d-flex align-items-center gap-3 flex-wrap">
+                <a href="index.html" class="btn-nav">← Galeria</a>
+                <a href="favoritos.html" class="btn-nav d-none" id="link-favoritos">❤️ Favoritos</a>
+                <button class="btn-nav btn-nav-logout" id="btn-logout" onclick="fazerLogout()">👋 Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-5" id="area-admin">
+
+        <!-- Acesso negado (mostrado se não for admin) -->
+        <div id="acesso-negado" class="d-none text-center py-5">
+            <h2>🚫 Acesso Restrito</h2>
+            <p class="text-muted">Esta área é exclusiva para administradores.</p>
+            <a href="index.html" class="btn-saber-mais">Voltar para a Galeria</a>
+        </div>
+
+        <!-- Área admin -->
+        <div id="area-crud">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <h2 class="subtitulo-secao mb-0">⚙️ Gerenciar Ídolos</h2>
+                <button class="btn-submit" onclick="abrirFormNovo()">➕ Novo Ídolo</button>
+            </div>
+
+            <!-- Alerta feedback -->
+            <div id="alerta-crud" class="alert d-none mb-4" role="alert"></div>
+
+            <!-- Formulário de cadastro/edição -->
+            <div id="form-crud" class="form-auth-box mb-5 d-none">
+                <h3 id="titulo-form-crud" class="mb-4">Novo Ídolo</h3>
+                <input type="hidden" id="crud-id">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="crud-nome" placeholder="Nome do ídolo">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Posição</label>
+                        <input type="text" class="form-control" id="crud-posicao" placeholder="Ex: Goleiro, Meia...">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Período no clube</label>
+                        <input type="text" class="form-control" id="crud-periodo" placeholder="Ex: 2005 - 2021">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Jogos</label>
+                        <input type="number" class="form-control" id="crud-jogos" placeholder="Quantidade de jogos">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Descrição curta</label>
+                        <input type="text" class="form-control" id="crud-descricao" placeholder="Frase resumo do ídolo">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Biografia</label>
+                        <textarea class="form-control" id="crud-biografia" rows="4" placeholder="Biografia completa"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Títulos (um por linha)</label>
+                        <textarea class="form-control" id="crud-titulos" rows="3" placeholder="Campeonato Brasileiro (2013)&#10;Copa do Brasil (2017)"></textarea>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <label class="form-label">Caminho da imagem</label>
+                        <input type="text" class="form-control" id="crud-imagem" placeholder="imagens/nome.png">
+                    </div>
+                    <div class="col-12 col-md-4 d-flex align-items-end">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="crud-destaque">
+                            <label class="form-check-label" for="crud-destaque">Destaque no carrossel</label>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex gap-3 mt-2">
+                        <button class="btn-submit" onclick="salvarIdolo()">💾 Salvar</button>
+                        <button class="btn-nav" onclick="fecharForm()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de ídolos -->
+            <div class="tabela-container">
+                <table class="table-crud">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Posição</th>
+                            <th>Período</th>
+                            <th>Jogos</th>
+                            <th>Destaque</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-idolos"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-copy">
+            <p class="mb-0">&copy; 2026 - Memorial Celeste. Trabalho de Sistemas de Informação.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
